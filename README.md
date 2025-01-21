@@ -89,18 +89,21 @@ Also set the `RPC_URL_SOLANA_TESTNET` value. Note that while the naming used her
 
 ### If you do not care about vanity keypairs ( custom token addresses ) skip this step and use `Prepare the OFT Program ID` Instead
 ### For vanity key pairs (SPL, lockbox, endpoint, and oft):
-```solana-keygen grind --starts-with <Desired String Here>:<key count>
+```
+solana-keygen grind --starts-with <Desired String Here>:<key count>
 ```
 To generate four keypairs starting with coq we use: 
 
-```solana-keygen grind --starts-with coq:4
+```
+solana-keygen grind --starts-with coq:4
 ```
 
 By default solana keygen does not have an output file option i.e. --output, so 4 key pairs will be generated to the terminal.
 At this point we have to use the json files that were output to the terminal and using the copy command and a direct path, copy them.
 The order does not matter, but if there is a specific keypair you want for the SPL keypair it has to be used in conjunction with the 
 splKeypair path.
-```cp <insert_lockbox_keypair_file_name.json> ./keypairs/lockboxKeypair.json
+```
+cp <insert_lockbox_keypair_file_name.json> ./keypairs/lockboxKeypair.json
 
 cp <insert_SPL_keypair_file_name.json> ./keypairs/splKeypair.json
 
@@ -479,3 +482,16 @@ mainnet and testnet (devnet):
 | devnet       | `9thqPdbR27A1yLWw2spwJLySemiGMXxPnEvfmXVk4KuK` |
 
 More info can be found in the [Solana documentation](https://solana.com/docs/advanced/lookup-tables).
+
+
+### Resources for Verification 
+##Verifcation repo for coqinu solana at: 
+
+```
+https://solscan.io/account/coqH44s2TNd2Rgu7kyNQw2zFapyfLYSFkjKdKYtqDFc
+```
+
+##To verify on solana using github use the following:
+```
+https://solana.com/developers/guides/advanced/verified-builds
+```
