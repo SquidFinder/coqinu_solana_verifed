@@ -53,7 +53,7 @@ const ethereumTokenContract: OmniPointHardhat = {
 
 const solanaTokenContract: OmniPointHardhat = {
     eid: EndpointId.SOLANA_V2_MAINNET,
-    address: 'e54XA8s7eikXL5Cg8kg45UygwoyCaMS9BR7GSt1Tk41', // NOTE: update this with the OFTStore address.
+    address: '5tTaePyf72LoSMj96noinYpCY2rTN2jvntUiLYhpaz3s', // NOTE: update this with the OFTStore address.
 }
 
 const config: OAppOmniGraphHardhat = {
@@ -1519,9 +1519,7 @@ const config: OAppOmniGraphHardhat = {
                  ],
              },
         },
-        //Ethereum-Solana Config
-        /* We are not setting ethereums yet */
-        /*
+        //Ethereum-Solana Config     
         {
             from: ethereumTokenContract,
             to:  solanaTokenContract,
@@ -1565,7 +1563,6 @@ const config: OAppOmniGraphHardhat = {
 			},
 		},
         },
-        */
         {
             from: solanaTokenContract,
             to: ethereumTokenContract,

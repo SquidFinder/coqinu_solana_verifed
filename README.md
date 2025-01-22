@@ -90,7 +90,7 @@ Also set the `RPC_URL_SOLANA_TESTNET` value. Note that while the naming used her
 ### If you do not care about vanity keypairs ( custom token addresses ) skip this step and use `Prepare the OFT Program ID` Instead
 ### For vanity key pairs (SPL, lockbox, endpoint, and oft):
 ```
-solana-keygen grind --starts-with <Desired String Here>:<key count>
+solana-keygen grind --starts-with <desired_string_here>:<key_count>
 ```
 To generate four keypairs starting with coq we use: 
 
@@ -102,8 +102,7 @@ By default solana keygen does not have an output file option i.e. --output, so 4
 At this point we have to use the json files that were output to the terminal and using the copy command and a direct path, copy them.
 The order does not matter, but if there is a specific keypair you want for the SPL keypair it has to be used in conjunction with the 
 splKeypair path.
-```
-cp <insert_lockbox_keypair_file_name.json> ./keypairs/lockboxKeypair.json
+```cp <insert_lockbox_keypair_file_name.json> ./keypairs/lockboxKeypair.json
 
 cp <insert_SPL_keypair_file_name.json> ./keypairs/splKeypair.json
 
@@ -232,7 +231,7 @@ sh -c "$(curl -sSfL https://release.solana.com/v1.17.31/install)"
 
 ### For Token Specifications, deploy as follows
 ```bash
-pnpm hardhat lz:oft:solana:create --eid 40168 --program-id coqAwUtGQPTWx27xeg7cueM7VVecTBSVPCX1sw3a12J --only-oft-store true --name "COQINU" --symbol "COQ" --uri "" --shared-decimals 4 --local-decimals 4
+pnpm hardhat lz:oft:solana:create --eid <40168 for devnet, 30168 for mainnet> --program-id <program_id> --only-oft-store <true/false (true means only endpoint can mint> --name <"TOKEN_NAME"> --symbol <"TOKEN_SYMBOL"> --uri <"TOKEN_URI.IPFS">
 ```
 
 :warning: Use `--additional-minters` flag to add a CSV of additional minter addresses to the Mint Authority Multisig. If you do not want to, you must specify `--only-oft-store true`.
@@ -242,7 +241,7 @@ pnpm hardhat lz:oft:solana:create --eid 40168 --program-id coqAwUtGQPTWx27xeg7cu
 #### For OFTAdapter:
 
 ```bash
-pnpm hardhat lz:oft-adapter:solana:create --eid 40168 --program-id <PROGRAM_ID> --mint <TOKEN_MINT> --token-program <TOKEN_PROGRAM_ID>
+pnpm hardhat lz:oft-adapter:solana:create --eid <40168 for devnet, 30168 for mainnet> --program-id <PROGRAM_ID> --mint <TOKEN_MINT> --token-program <TOKEN_PROGRAM_ID>
 ```
 
 :information_source: You can use OFT Adapter if you want to use an existing token on Solana. For OFT Adapter, tokens will be locked when sending to other chains and unlocked when receiving from other chains.
@@ -250,7 +249,7 @@ pnpm hardhat lz:oft-adapter:solana:create --eid 40168 --program-id <PROGRAM_ID> 
 #### For OFT Mint-And-Burn Adapter (MABA):
 
 ```bash
-pnpm hardhat lz:oft:solana:create --eid 40168 --program-id <PROGRAM_ID> --mint <TOKEN_MINT> --token-program <TOKEN_PROGRAM_ID>
+pnpm hardhat lz:oft:solana:create --eid <40168 for devnet, 30168 for mainnet> --program-id <PROGRAM_ID> --mint <TOKEN_MINT> --token-program <TOKEN_PROGRAM_ID>
 ```
 
 :information_source: You can use OFT Mint-And-Burn Adapter if you want to use an existing token on Solana. For OFT Mint-And-Burn Adapter, tokens will be burned when sending to other chains and minted when receiving from other chains. Note that before attempting any cross-chain transfers, you must transfer the Mint Authority to the OFT Store address for `lz_receive` to work, as that is not handled in the script. You cannot use this option if your token's Mint Authority has been renounced.
@@ -330,13 +329,13 @@ For Solana -> Sepolia, you should pass in the options value into the script at [
 #### Send SOL -> Sepolia
 
 ```bash
-npx hardhat lz:oft:solana:send --amount <AMOUNT> --from-eid 40168 --to <TO> --to-eid 40161 --mint <MINT_ADDRESS> --program-id <PROGRAM_ID> --escrow <ESCROW>
+npx hardhat lz:oft:solana:send --amount <AMOUNT> --from-eid <40168 for devnet, 30168 for mainnet> --to <TO> --to-eid 40161 --mint <MINT_ADDRESS> --program-id <PROGRAM_ID> --escrow <ESCROW>
 ```
 
 #### Send Sepolia -> SOL
 
 ```bash
-npx hardhat --network sepolia-testnet send --dst-eid 40168 --amount <AMOUNT> --to <TO>
+npx hardhat --network sepolia-testnet send --dst-eid <40168 for devnet, 30168 for mainnet> --amount <AMOUNT> --to <TO>
 ```
 
 :information_source: If you encounter an error such as `No Contract deployed with name`, ensure that the `tokenName` in the task defined in `tasks/evm/send.ts` matches the deployed contract name.
@@ -346,7 +345,7 @@ npx hardhat --network sepolia-testnet send --dst-eid 40168 --amount <AMOUNT> --t
 If you are not happy with the deployer being a mint authority, you can create and set a new mint authority by running:
 
 ```bash
-pnpm hardhat lz:oft:solana:setauthority --eid <SOLANA_EID> --mint <TOKEN_MINT> --program-id <PROGRAM_ID> --escrow <ESCROW> --additional-minters <MINTERS_CSV>
+pnpm hardhat lz:oft:solana:setauthority --eid <40168 for devnet, 30168 for mainnet> --mint <TOKEN_MINT> --program-id <PROGRAM_ID> --escrow <ESCROW> --additional-minters <MINTERS_CSV>
 ```
 
 The `OFTStore` is automatically added as a mint authority to the newly created mint authority, and does not need to be
@@ -482,16 +481,3 @@ mainnet and testnet (devnet):
 | devnet       | `9thqPdbR27A1yLWw2spwJLySemiGMXxPnEvfmXVk4KuK` |
 
 More info can be found in the [Solana documentation](https://solana.com/docs/advanced/lookup-tables).
-
-
-### Resources for Verification 
-##Verifcation repo for coqinu solana at: 
-
-```
-https://solscan.io/account/coqH44s2TNd2Rgu7kyNQw2zFapyfLYSFkjKdKYtqDFc
-```
-
-##To verify on solana using github use the following:
-```
-https://solana.com/developers/guides/advanced/verified-builds
-```

@@ -6,13 +6,11 @@ coverage.json
 target
 typechain
 typechain-types
+recover.json
 
 # Hardhat files
 cache
 artifacts
-
-# Keys
-.keys_to_encrypt
 keypairs
 
 

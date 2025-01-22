@@ -198,8 +198,10 @@ task('lz:oft:solana:create', 'Mints new SPL Token and creates new OFT Store acco
 	      publicKey: publicKeyStringLockBox,
 	      secretKey: keyPairForLockbox.secretKey
 	    }
-	    
+	    //console.log(fullKeypairLockbox.publicKey)
+	    //console.log(fullKeypairSPL.publicKey)
 	    console.log("Entering custom key generation")
+	    //process.exit(0)
 	    const { programId, lockBox, escrowPK, oftStorePda, eddsa } = deriveCustomKeys(programIdStr, fullKeypairLockbox)
 
 	
@@ -210,9 +212,9 @@ task('lz:oft:solana:create', 'Mints new SPL Token and creates new OFT Store acco
  	    console.log("Lock Box: ", lockBox) 
  	    console.log("Escrow: ", escrowPK) 
  	    console.log("OFT Store PDA: ",oftStorePda)
-
-	    process.exit(0)
 	    */
+
+	    
             if (!additionalMintersAsStrings) {
                 if (!onlyOftStore) {
                     throw new Error(
