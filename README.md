@@ -232,7 +232,7 @@ sh -c "$(curl -sSfL https://release.solana.com/v1.17.31/install)"
 
 ### For Token Specifications, deploy as follows
 ```bash
-pnpm hardhat lz:oft:solana:create --eid <40168 for devnet, 30168 for mainnet> --program-id <program_id> --only-oft-store <true/false (true means only endpoint can mint> --name <"TOKEN_NAME"> --symbol <"TOKEN_SYMBOL"> --uri <"TOKEN_URI.IPFS">
+pnpm hardhat lz:oft:solana:create --eid 40168 --program-id coqAwUtGQPTWx27xeg7cueM7VVecTBSVPCX1sw3a12J --only-oft-store true --name "COQINU" --symbol "COQ" --uri "" --shared-decimals 4 --local-decimals 4
 ```
 
 :warning: Use `--additional-minters` flag to add a CSV of additional minter addresses to the Mint Authority Multisig. If you do not want to, you must specify `--only-oft-store true`.
